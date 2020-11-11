@@ -2,7 +2,7 @@ package com.abhishekgupta.githubsearch.di
 
 import com.abhishekgupta.githubsearch.repo.SearchRepository
 import com.abhishekgupta.githubsearch.repo.SearchRepositoryImpl
-import com.abhishekgupta.githubsearch.view.SearchViewModel
+import com.abhishekgupta.githubsearch.viewmodel.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

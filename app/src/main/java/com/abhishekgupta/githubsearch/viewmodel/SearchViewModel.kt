@@ -20,9 +20,11 @@ class SearchViewModel(
     val followerLiveData: MutableLiveData<Resource<List<Follower>>> = MutableLiveData()
     val followingLiveData: MutableLiveData<Resource<List<Following>>> = MutableLiveData()
 
-    fun getUserDetails(userName: String) {
-        viewModelScope.launch {
+    private var userName = ""
 
+    fun getUserDetails(userName: String) {
+        this.userName = userName
+        viewModelScope.launch {
             userLiveData.value = Resource.Loading()
 
             val user = async { repo.getUser(userName) }.await()
@@ -43,7 +45,7 @@ class SearchViewModel(
     }
 
 
-    fun getUserFollowers(userName: String) {
+    fun getUserFollowers() {
         viewModelScope.launch {
             followerLiveData.value = Resource.Loading()
             val followers = repo.getUserFollowers(userName)
@@ -56,7 +58,7 @@ class SearchViewModel(
         }
     }
 
-    fun getUserFollowing(userName: String) {
+    fun getUserFollowing() {
         viewModelScope.launch {
             followingLiveData.value = Resource.Loading()
 
