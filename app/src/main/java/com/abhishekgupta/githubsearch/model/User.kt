@@ -10,6 +10,7 @@ data class User(
     @PrimaryKey val login: String,
     val name: String,
     val bio: String,
+    val lastRefresh: Long,
     @SerializedName("public_repos") val repos: Int,
     @SerializedName("followers") val followersCount: Int,
     @SerializedName("following") val followingCount: Int,

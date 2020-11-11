@@ -5,6 +5,8 @@ import com.abhishekgupta.githubsearch.model.Following
 import com.abhishekgupta.githubsearch.model.User
 import com.abhishekgupta.githubsearch.repo.db.SearchDao
 import com.abhishekgupta.githubsearch.repo.network.GithubApi
+import com.abhishekgupta.githubsearch.util.getCurrentTimeMillis
+import com.abhishekgupta.githubsearch.util.isCacheExpired
 
 class SearchRepositoryImpl(
     private val api: GithubApi,
@@ -21,10 +23,10 @@ class SearchRepositoryImpl(
             followingPage = 1
             var user = dao.getUser(userName)
 
-            if (user == null) {
+            if (shouldFetchFromRemote(user)) {
                 user = api.getUser(userName)
                 user?.let {
-                    dao.insertUser(it)
+                    dao.insertUser(it.copy(lastRefresh= getCurrentTimeMillis()))
                 }
             }
 
@@ -77,7 +79,11 @@ class SearchRepositoryImpl(
         }
     }
 
+    private fun shouldFetchFromRemote(user: User?) =
+        user == null || isCacheExpired(user.lastRefresh)
+
     companion object {
         const val LIMIT = 10
+        const val CACHE_EXPIRY_HOURS = 2 // cache expiry time in hours
     }
 }
