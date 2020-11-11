@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingStart="@dimen/content_padding"
+    android:paddingEnd="@dimen/content_padding"
+    android:paddingBottom="@dimen/content_padding">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/userAvatar"
+        android:layout_width="@dimen/circular_image_dimen"
+        android:layout_height="@dimen/circular_image_dimen"
+        android:layout_marginTop="@dimen/circular_image_top"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/full_name_margin_start"
+        android:layout_marginTop="@dimen/full_name_margin_top"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/full_name_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/userAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteY="@dimen/full_name_margin_y_pos"
+        tools:text="Full Name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/name_margin_start"
+        android:layout_marginTop="@dimen/name_margin_top"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/name_text_size"
+        app:layout_constraintStart_toEndOf="@+id/userAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/fullName"
+        tools:text="username" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bio"
+        android:layout_width="@dimen/bio_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/bio_margin_start"
+        android:layout_marginTop="@dimen/bio_margin_top"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/bio_text_size"
+        app:layout_constraintStart_toEndOf="@+id/userAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        tools:text="This is the demo description of the demo search repository. It supports multiline" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/followers_margin_start"
+        android:layout_marginTop="@dimen/followers_margin_top"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/followers_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/userAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        app:layout_editor_absoluteX="@dimen/content_margin"
+        tools:text="116 Followers" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/following_margin_start"
+        android:layout_marginTop="@dimen/following_margin_top"
+        android:gravity="center_vertical"
+        android:textAlignment="gravity"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/following_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/followers"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        tools:text="14 Following" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/repos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/repos_margin_start"
+        android:layout_marginTop="@dimen/repos_margin_top"
+        android:gravity="center_vertical"
+        android:textAlignment="gravity"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/repos_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/following"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        tools:text="43 Repos" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

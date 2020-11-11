@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingStart="@dimen/content_padding"
+    android:paddingEnd="@dimen/content_padding"
+    android:paddingBottom="@dimen/content_padding">
+
+    <View
+        android:id="@+id/followPlaceHolder"
+        android:layout_width="@dimen/follow_avatar_dimen"
+        android:layout_height="@dimen/follow_avatar_dimen"
+        android:layout_marginTop="@dimen/circular_image_top"
+        android:background="@drawable/placeholder_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="@dimen/placeholder2_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/full_name_margin_start"
+        android:layout_marginTop="@dimen/full_name_margin_top"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/followPlaceHolder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteY="@dimen/full_name_margin_y_pos"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

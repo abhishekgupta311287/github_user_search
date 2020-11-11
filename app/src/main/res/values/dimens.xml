@@ -1,0 +1,51 @@
+<resources>
+    <dimen name="placeholder_circle_width">9dp</dimen>
+    <dimen name="placeholder_circle_height">9dp</dimen>
+
+    <dimen name="name_margin_top">6dp</dimen>
+    <dimen name="content_margin">10dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="circular_image_dimen">100dp</dimen>
+    <dimen name="full_name_margin_start">20dp</dimen>
+    <dimen name="full_name_margin_top">16dp</dimen>
+    <dimen name="full_name_margin_y_pos">16dp</dimen>
+    <dimen name="name_margin_start">16dp</dimen>
+    <dimen name="bio_margin_start">16dp</dimen>
+    <dimen name="followers_margin_start">16dp</dimen>
+    <dimen name="followers_margin_top">8dp</dimen>
+    <dimen name="following_margin_top">8dp</dimen>
+    <dimen name="repos_margin_top">8dp</dimen>
+
+    <dimen name="full_name_text_size">14sp</dimen>
+    <dimen name="name_text_size">16sp</dimen>
+    <dimen name="bio_text_size">14sp</dimen>
+    <dimen name="followers_text_size">12sp</dimen>
+    <dimen name="following_text_size">12sp</dimen>
+    <dimen name="repos_text_size">12sp</dimen>
+    <dimen name="bio_margin_top">8dp</dimen>
+    <dimen name="following_margin_start">16dp</dimen>
+    <dimen name="repos_margin_start">16dp</dimen>
+
+    <dimen name="circular_image_top">21dp</dimen>
+    <dimen name="placeholder_padding">21dp</dimen>
+    <dimen name="placeholder_margin">18dp</dimen>
+    <dimen name="placeholder2_width">100dp</dimen>
+    <dimen name="placeholder5_width">62dp</dimen>
+    <dimen name="placeholder_height">6dp</dimen>
+    <dimen name="placeholder3_height">8dp</dimen>
+    <dimen name="placeholder3_width">224dp</dimen>
+    <dimen name="placeholder_radius">8dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="error_title_margin_top">24dp</dimen>
+    <dimen name="error_title_size">18sp</dimen>
+    <dimen name="error_subtitle_margin_top">8dp</dimen>
+    <dimen name="error_subtitle_size">15sp</dimen>
+    <dimen name="retry_btn_height">48dp</dimen>
+    <dimen name="retry_btn_text_size">15sp</dimen>
+    <dimen name="rectangle_stroke_height">1dp</dimen>
+    <dimen name="rectangle_radius">4dp</dimen>
+    <dimen name="title_size">21sp</dimen>
+    <dimen name="bio_width">272dp</dimen>
+    <dimen name="follow_avatar_dimen">32dp</dimen>
+
+</resources>

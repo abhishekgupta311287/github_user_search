@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Github Search</string>
+    <string name="followers_count">%d Followers</string>
+    <string name="following_count">%d Following</string>
+    <string name="repos_count">%d Repos</string>
+
+    <string name="followers_title">Followers</string>
+    <string name="following_title">Following</string>
+
+    <string name="no_followers">No Followers.</string>
+    <string name="no_following">Not Following Anyone.</string>
+
+    <string name="error_title">Something went wrong…</string>
+    <string name="error_subtitle_text">Please try again.</string>
+    <string name="search_github_user_profile">Search github user profile</string>
+    <string name="enter_user_name">Please enter github user name</string>
+
 </resources>

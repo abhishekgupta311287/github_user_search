@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingTop="@dimen/placeholder_padding">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/placeholder1"
+        android:layout_width="@dimen/circular_image_dimen"
+        android:layout_height="@dimen/circular_image_dimen"
+        android:layout_marginStart="@dimen/placeholder_padding"
+        android:background="@drawable/placeholder_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/placeholder2"
+        android:layout_width="@dimen/placeholder2_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteY="@dimen/full_name_margin_y_pos" />
+
+    <View
+        android:id="@+id/placeholder3"
+        android:layout_width="@dimen/placeholder2_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="@dimen/placeholder_margin"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder1"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder2" />
+
+    <View
+        android:id="@+id/placeholder4"
+        android:layout_width="@dimen/placeholder3_width"
+        android:layout_height="@dimen/placeholder3_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="@dimen/placeholder_margin"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder1"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder3" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/placeholder5"
+        android:layout_width="@dimen/placeholder5_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="@dimen/placeholder_margin"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder1"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder4" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/placeholder6"
+        android:layout_width="@dimen/placeholder5_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="@dimen/placeholder_margin"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder5"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder4" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/placeholder7"
+        android:layout_width="@dimen/placeholder5_width"
+        android:layout_height="@dimen/placeholder_height"
+        android:layout_marginStart="@dimen/placeholder_margin"
+        android:layout_marginTop="@dimen/placeholder_margin"
+        android:background="@drawable/place_holder_view"
+        app:layout_constraintStart_toEndOf="@+id/placeholder6"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder4" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginTop="21dp"
+        android:background="@color/placeholder_color"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
