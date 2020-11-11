@@ -1,15 +1,17 @@
 package com.abhishekgupta.githubsearch.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "user")
 data class User(
     val id: Int,
-    val login: String,
+    @PrimaryKey val login: String,
     val name: String,
     val bio: String,
-    val followers: Int,
-    val following: Int,
-    @SerializedName("avatar_url") val avatar: String,
-    @SerializedName("followers_url") val followersUrl: String,
-    @SerializedName("following_url") val followingURl: String
+    @SerializedName("public_repos") val repos: Int,
+    @SerializedName("followers") val followersCount: Int,
+    @SerializedName("following") val followingCount: Int,
+    @SerializedName("avatar_url") val avatar: String
 )
