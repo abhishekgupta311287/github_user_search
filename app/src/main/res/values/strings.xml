@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Github Search</string>
+    <string name="login">"@"%s</string>
     <string name="followers_count">%d Followers</string>
     <string name="following_count">%d Following</string>
     <string name="repos_count">%d Repos</string>

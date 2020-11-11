@@ -61,7 +61,7 @@ class SearchFragment : Fragment() {
         searchBtn.setOnClickListener {
             fetchUserDetails()
         }
-        searchBox.setOnEditorActionListener { v, actionId, event ->
+        searchBox.setOnEditorActionListener { _ , _ , event ->
             if (event?.action == KeyEvent.ACTION_DOWN) {
                 fetchUserDetails()
             }
@@ -261,7 +261,7 @@ class SearchFragment : Fragment() {
 
     private fun setUserDetails(user: User) {
         fullName.text = user.name
-        userName.text = user.login
+        userName.text = getString(R.string.login, user.login)
         bio.text = user.bio
         followers.text =
             getString(R.string.followers_count, user.followersCount)
