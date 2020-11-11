@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abhishekgupta.githubsearch.R
 import com.abhishekgupta.githubsearch.model.*
+import com.abhishekgupta.githubsearch.util.isNetworkAvailable
 import com.abhishekgupta.githubsearch.view.adapter.FollowAdapter
 import com.abhishekgupta.githubsearch.viewmodel.SearchViewModel
 import com.bumptech.glide.Glide
@@ -37,6 +38,8 @@ class SearchFragment : Fragment() {
 
     private var isFetchingFollowers = false
     private var isFetchingFollowing = false
+    private var followersCount = 0
+    private var followingCount = 0
 
     private val viewModel by viewModel<SearchViewModel>()// by koin dependency injection
 
@@ -61,7 +64,7 @@ class SearchFragment : Fragment() {
         searchBtn.setOnClickListener {
             fetchUserDetails()
         }
-        searchBox.setOnEditorActionListener { _ , _ , event ->
+        searchBox.setOnEditorActionListener { _, _, event ->
             if (event?.action == KeyEvent.ACTION_DOWN) {
                 fetchUserDetails()
             }
@@ -108,7 +111,11 @@ class SearchFragment : Fragment() {
                 val itemCount = layoutManager.itemCount
                 val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
 
-                if (!isFetchingFollowing && itemCount <= lastVisibleItemPosition + THRESHOLD /*&& isNetworkAvailable() == true*/) {
+                if (!isFetchingFollowing
+                    && itemCount <= lastVisibleItemPosition + THRESHOLD
+                    && itemCount < followingCount
+                    && requireContext().isNetworkAvailable() == true
+                ) {
                     viewModel.getUserFollowing()
                     isFetchingFollowing = true
                 }
@@ -140,7 +147,11 @@ class SearchFragment : Fragment() {
                 val itemCount = layoutManager.itemCount
                 val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
 
-                if (!isFetchingFollowers && itemCount <= lastVisibleItemPosition + THRESHOLD /*&& isNetworkAvailable() == true*/) {
+                if (!isFetchingFollowers
+                    && itemCount <= lastVisibleItemPosition + THRESHOLD
+                    && itemCount < followersCount
+                    && requireContext().isNetworkAvailable() == true
+                ) {
                     viewModel.getUserFollowers()
                     isFetchingFollowers = true
                 }
@@ -188,7 +199,6 @@ class SearchFragment : Fragment() {
                     val previousSize = followerAdapter.list.size
                     followerAdapter.list.addAll(it.data as ArrayList<Follower?>)
                     followerAdapter.notifyItemRangeInserted(previousSize, it.data.size)
-                    isFetchingFollowers = false
                 }
                 is Resource.Loading -> {
                     layout_follower.recyclerView.post {
@@ -204,6 +214,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun removeFollowerNullItem() {
+        isFetchingFollowers = false
         if (followerAdapter.list.remove(null)) {
             followerAdapter.notifyItemRemoved(followerAdapter.list.size)
         }
@@ -217,7 +228,6 @@ class SearchFragment : Fragment() {
                     val previousSize = followingAdapter.list.size
                     followingAdapter.list.addAll(it.data as ArrayList<Following?>)
                     followingAdapter.notifyItemRangeInserted(previousSize, it.data.size)
-                    isFetchingFollowing = false
                 }
                 is Resource.Loading -> {
                     layout_following.recyclerView.post {
@@ -234,6 +244,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun removeFollowingNullItem() {
+        isFetchingFollowing = false
         if (followingAdapter.list.remove(null)) {
             followingAdapter.notifyItemRemoved(followerAdapter.list.size)
         }
@@ -244,6 +255,8 @@ class SearchFragment : Fragment() {
             layout_following.noData.visibility = View.VISIBLE
             layout_following.recyclerView.visibility = View.INVISIBLE
         } else {
+            layout_following.noData.visibility = View.INVISIBLE
+            layout_following.recyclerView.visibility = View.VISIBLE
             followingAdapter.list = userDetail.following as ArrayList<Following?>
             followingAdapter.notifyDataSetChanged()
         }
@@ -254,6 +267,8 @@ class SearchFragment : Fragment() {
             layout_follower.noData.visibility = View.VISIBLE
             layout_follower.recyclerView.visibility = View.INVISIBLE
         } else {
+            layout_follower.noData.visibility = View.INVISIBLE
+            layout_follower.recyclerView.visibility = View.VISIBLE
             followerAdapter.list = userDetail.followers as ArrayList<Follower?>
             followerAdapter.notifyDataSetChanged()
         }
@@ -263,6 +278,8 @@ class SearchFragment : Fragment() {
         fullName.text = user.name
         userName.text = getString(R.string.login, user.login)
         bio.text = user.bio
+        followersCount = user.followersCount
+        followingCount = user.followingCount
         followers.text =
             getString(R.string.followers_count, user.followersCount)
         following.text =

@@ -1,5 +1,6 @@
 package com.abhishekgupta.githubsearch.repo
 
+import android.content.Context
 import com.abhishekgupta.githubsearch.model.Follower
 import com.abhishekgupta.githubsearch.model.Following
 import com.abhishekgupta.githubsearch.model.User
@@ -7,14 +8,17 @@ import com.abhishekgupta.githubsearch.repo.db.SearchDao
 import com.abhishekgupta.githubsearch.repo.network.GithubApi
 import com.abhishekgupta.githubsearch.util.getCurrentTimeMillis
 import com.abhishekgupta.githubsearch.util.isCacheExpired
+import com.abhishekgupta.githubsearch.util.isNetworkAvailable
 
 class SearchRepositoryImpl(
     private val api: GithubApi,
-    private val dao: SearchDao
+    private val dao: SearchDao,
+    private val context: Context
 ) : SearchRepository {
 
     private var followerPage = 1
     private var followingPage = 1
+    private var isCacheExpired = true
 
     override suspend fun getUser(userName: String): User? {
         return try {
@@ -23,10 +27,12 @@ class SearchRepositoryImpl(
             followingPage = 1
             var user = dao.getUser(userName)
 
-            if (shouldFetchFromRemote(user)) {
+            isCacheExpired = shouldFetchFromRemote(user)
+
+            if (isCacheExpired && context.isNetworkAvailable() == true) {
                 user = api.getUser(userName)
                 user?.let {
-                    dao.insertUser(it.copy(lastRefresh= getCurrentTimeMillis()))
+                    dao.insertUser(it.copy(lastRefresh = getCurrentTimeMillis()))
                 }
             }
 
@@ -42,7 +48,7 @@ class SearchRepositoryImpl(
 
             var followers = dao.getUserFollowers(userName, LIMIT, start)
 
-            if (followers.isEmpty()) {
+            if (context.isNetworkAvailable() == true && (followers.isEmpty() || isCacheExpired)) {
                 followers = api.getUserFollowers(userName, LIMIT, followerPage)
 
                 if (followers.isNotEmpty()) {
@@ -64,7 +70,7 @@ class SearchRepositoryImpl(
 
             var following = dao.getUserFollowing(userName, LIMIT, start)
 
-            if (following.isEmpty()) {
+            if (context.isNetworkAvailable() == true && (following.isEmpty() || isCacheExpired)) {
                 following = api.getUserFollowing(userName, LIMIT, followingPage)
                 if (following.isNotEmpty()) {
                     dao.insertUserFollowing(userName, following)
