@@ -1,4 +1,4 @@
-package com.abhishekgupta.githubsearch.view
+package com.abhishekgupta.githubsearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,26 +43,30 @@ class SearchViewModel(
     }
 
 
-    suspend fun getUserFollowers(userName: String) {
-        followerLiveData.value = Resource.Loading()
-        val followers = repo.getUserFollowers(userName)
+    fun getUserFollowers(userName: String) {
+        viewModelScope.launch {
+            followerLiveData.value = Resource.Loading()
+            val followers = repo.getUserFollowers(userName)
 
-        if (followers.isEmpty()) {
-            followerLiveData.value = Resource.Error("No more followers")
-        } else {
-            followerLiveData.value = Resource.Success(followers)
+            if (followers.isEmpty()) {
+                followerLiveData.value = Resource.Error("No more followers")
+            } else {
+                followerLiveData.value = Resource.Success(followers)
+            }
         }
     }
 
-    suspend fun getUserFollowing(userName: String) {
-        followingLiveData.value = Resource.Loading()
+    fun getUserFollowing(userName: String) {
+        viewModelScope.launch {
+            followingLiveData.value = Resource.Loading()
 
-        val following = repo.getUserFollowing(userName)
+            val following = repo.getUserFollowing(userName)
 
-        if (following.isEmpty()) {
-            followingLiveData.value = Resource.Error("No more following")
-        } else {
-            followingLiveData.value = Resource.Success(following)
+            if (following.isEmpty()) {
+                followingLiveData.value = Resource.Error("No more following")
+            } else {
+                followingLiveData.value = Resource.Success(following)
+            }
         }
     }
 
