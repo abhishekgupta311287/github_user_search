@@ -1,8 +1,8 @@
-package com.abhishekgupta.githubsearch
+package com.abhishekgupta.githubsearch.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.abhishekgupta.githubsearch.view.SearchFragment
+import com.abhishekgupta.githubsearch.R
 
 class SearchActivity : AppCompatActivity() {
 
