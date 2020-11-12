@@ -21,11 +21,12 @@ class SearchRepositoryImpl(
     private var isCacheExpired = true
 
     override suspend fun getUser(userName: String): User? {
+        var user: User? = null
         return try {
             // reset page count when user is searched
             followerPage = 1
             followingPage = 1
-            var user = dao.getUser(userName)
+            user = dao.getUser(userName)
 
             isCacheExpired = shouldFetchFromRemote(user)
 
@@ -38,15 +39,16 @@ class SearchRepositoryImpl(
 
             user
         } catch (e: Exception) {
-            null
+            user
         }
     }
 
     override suspend fun getUserFollowers(userName: String): List<Follower> {
+        var followers = emptyList<Follower>()
         return try {
             val start = LIMIT * (followerPage - 1)
 
-            var followers = dao.getUserFollowers(userName, LIMIT, start)
+            followers = dao.getUserFollowers(userName, LIMIT, start)
 
             if (context.isNetworkAvailable() == true && (followers.isEmpty() || isCacheExpired)) {
                 followers = api.getUserFollowers(userName, LIMIT, followerPage)
@@ -60,15 +62,16 @@ class SearchRepositoryImpl(
 
             followers
         } catch (e: Exception) {
-            emptyList()
+            followers
         }
     }
 
     override suspend fun getUserFollowing(userName: String): List<Following> {
+        var following = emptyList<Following>()
         return try {
             val start = LIMIT * (followingPage - 1)
 
-            var following = dao.getUserFollowing(userName, LIMIT, start)
+            following = dao.getUserFollowing(userName, LIMIT, start)
 
             if (context.isNetworkAvailable() == true && (following.isEmpty() || isCacheExpired)) {
                 following = api.getUserFollowing(userName, LIMIT, followingPage)
@@ -81,7 +84,7 @@ class SearchRepositoryImpl(
 
             following
         } catch (e: Exception) {
-            emptyList()
+            following
         }
     }
 
