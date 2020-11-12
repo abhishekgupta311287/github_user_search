@@ -2,9 +2,6 @@ package com.abhishekgupta.githubsearch.repo
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.abhishekgupta.githubsearch.model.Follower
-import com.abhishekgupta.githubsearch.model.Following
-import com.abhishekgupta.githubsearch.model.User
 import com.abhishekgupta.githubsearch.repo.db.SearchDao
 import com.abhishekgupta.githubsearch.repo.network.GithubApi
 import com.abhishekgupta.githubsearch.testFollowerList
@@ -18,10 +15,10 @@ import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Rule
+import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class SearchRepositoryImplTest {

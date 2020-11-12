@@ -1,20 +1,23 @@
 package com.abhishekgupta.githubsearch.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.abhishekgupta.githubsearch.*
 import com.abhishekgupta.githubsearch.di.appModule
 import com.abhishekgupta.githubsearch.di.dbModule
 import com.abhishekgupta.githubsearch.di.networkModule
 import com.abhishekgupta.githubsearch.model.Resource
 import com.abhishekgupta.githubsearch.repo.SearchRepository
+import com.abhishekgupta.githubsearch.testFollowerList
+import com.abhishekgupta.githubsearch.testFollowingList
+import com.abhishekgupta.githubsearch.testUser
+import com.abhishekgupta.githubsearch.userName
 import io.mockk.coEvery
 import io.mockk.mockk
 import org.junit.After
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 
