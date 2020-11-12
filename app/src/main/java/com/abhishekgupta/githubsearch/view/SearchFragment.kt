@@ -5,6 +5,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -63,6 +64,7 @@ class SearchFragment : Fragment() {
     private fun setSearchView() {
         searchBtn.setOnClickListener {
             fetchUserDetails()
+            searchBox.onEditorAction(EditorInfo.IME_ACTION_DONE)
         }
         searchBox.setOnEditorActionListener { _, _, event ->
             if (event?.action == KeyEvent.ACTION_DOWN) {
