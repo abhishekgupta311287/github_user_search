@@ -96,6 +96,7 @@ class GithubApiTest {
         )
         Assert.assertThat(follower.id, CoreMatchers.`is`(50449783))
         Assert.assertThat(follower.login, CoreMatchers.`is`("farrahtito789"))
+        Assert.assertThat(follower.user, CoreMatchers.nullValue())
 
     }
 
@@ -118,14 +119,15 @@ class GithubApiTest {
 
         Assert.assertEquals(1, following.size)
 
-        val follower = following[0]
+        val followingUser = following[0]
 
         Assert.assertThat(
-            follower.avatar,
+            followingUser.avatar,
             CoreMatchers.`is`("https://avatars2.githubusercontent.com/u/50449783?v=4")
         )
-        Assert.assertThat(follower.id, CoreMatchers.`is`(50449783))
-        Assert.assertThat(follower.login, CoreMatchers.`is`("farrahtito789"))
+        Assert.assertThat(followingUser.id, CoreMatchers.`is`(50449783))
+        Assert.assertThat(followingUser.login, CoreMatchers.`is`("farrahtito789"))
+        Assert.assertThat(followingUser.user, CoreMatchers.nullValue())
 
     }
 
