@@ -1,8 +1,9 @@
 package com.abhishekgupta.githubsearch.repo.db
 
-import com.abhishekgupta.githubsearch.model.Follower
-import com.abhishekgupta.githubsearch.model.Following
-import com.abhishekgupta.githubsearch.model.User
+import com.abhishekgupta.githubsearch.testFollowerList
+import com.abhishekgupta.githubsearch.testFollowingList
+import com.abhishekgupta.githubsearch.testUser
+import com.abhishekgupta.githubsearch.userName
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -15,30 +16,6 @@ import org.junit.Test
 class SearchDaoImplTest {
 
     private val dao = mockk<SearchDbDao>(relaxed = true)
-
-    private val userName = "abhishekgupta311287"
-
-    private val testUser = User(
-        1,
-        userName,
-        "Abhishek Gupta",
-        "I am software engineer",
-        0,
-        10,
-        10,
-        10,
-        "avatar_url"
-    )
-
-    private val testFollowerList = listOf(
-        Follower(userName, 2, "ab", "url"),
-        Follower("abhishekgupta311287", 3, "abs", "url")
-    )
-
-    private val testFollowingList = listOf(
-        Following(userName, 4, "abi", "url"),
-        Following(userName, 5, "rub", "url")
-    )
 
     @Test
     fun `test user`() = runBlockingTest {

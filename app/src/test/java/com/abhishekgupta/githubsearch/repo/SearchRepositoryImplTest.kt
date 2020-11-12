@@ -7,6 +7,10 @@ import com.abhishekgupta.githubsearch.model.Following
 import com.abhishekgupta.githubsearch.model.User
 import com.abhishekgupta.githubsearch.repo.db.SearchDao
 import com.abhishekgupta.githubsearch.repo.network.GithubApi
+import com.abhishekgupta.githubsearch.testFollowerList
+import com.abhishekgupta.githubsearch.testFollowingList
+import com.abhishekgupta.githubsearch.testUser
+import com.abhishekgupta.githubsearch.userName
 import com.abhishekgupta.githubsearch.util.getCurrentTimeMillis
 import com.abhishekgupta.githubsearch.util.isNetworkAvailable
 import io.mockk.coEvery
@@ -28,30 +32,6 @@ class SearchRepositoryImplTest {
     private val api = mockk<GithubApi>(relaxed = true)
     private val dao = mockk<SearchDao>(relaxed = true)
     private val context = mockk<Context>(relaxed = true)
-
-    private val userName = "abhishekgupta311287"
-
-    private val testUser = User(
-        1,
-        userName,
-        "Abhishek Gupta",
-        "I am software engineer",
-        0,
-        10,
-        10,
-        10,
-        "avatar_url"
-    )
-
-    private val testFollowerList = listOf(
-        Follower(userName, 2, "ab", "url"),
-        Follower("abhishekgupta311287", 3, "abs", "url")
-    )
-
-    private val testFollowingList = listOf(
-        Following(userName, 4, "abi", "url"),
-        Following(userName, 5, "rub", "url")
-    )
 
     @Test
     fun `test no user in db`() = runBlockingTest {
