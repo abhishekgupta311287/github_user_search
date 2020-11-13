@@ -20,7 +20,7 @@
         android:layout_width="@dimen/placeholder2_width"
         android:layout_height="@dimen/placeholder_height"
         android:layout_marginStart="@dimen/placeholder_margin"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/placeholder_margin_top"
         android:background="@drawable/place_holder_view"
         app:layout_constraintStart_toEndOf="@+id/placeholder1"
         app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/placeholder4" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/placeholder7"
         android:layout_width="@dimen/placeholder5_width"
         android:layout_height="@dimen/placeholder_height"
         android:layout_marginStart="@dimen/placeholder_margin"
@@ -79,7 +78,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="@dimen/divider_margin_top"
         android:background="@color/placeholder_color"
         app:layout_constraintTop_toBottomOf="@+id/placeholder1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

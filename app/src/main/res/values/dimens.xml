@@ -38,14 +38,18 @@
     <dimen name="divider_height">1dp</dimen>
     <dimen name="error_title_margin_top">24dp</dimen>
     <dimen name="error_title_size">18sp</dimen>
-    <dimen name="error_subtitle_margin_top">8dp</dimen>
-    <dimen name="error_subtitle_size">15sp</dimen>
-    <dimen name="retry_btn_height">48dp</dimen>
-    <dimen name="retry_btn_text_size">15sp</dimen>
-    <dimen name="rectangle_stroke_height">1dp</dimen>
-    <dimen name="rectangle_radius">4dp</dimen>
-    <dimen name="title_size">21sp</dimen>
     <dimen name="bio_width">272dp</dimen>
     <dimen name="follow_avatar_dimen">32dp</dimen>
+    <dimen name="no_data_margin_top">20dp</dimen>
+    <dimen name="recycler_margin_top">2dp</dimen>
+    <dimen name="placeholder_margin_top">8dp</dimen>
+    <dimen name="divider_margin_top">21dp</dimen>
+    <dimen name="progress_bar_margin_top">2dp</dimen>
+    <dimen name="search_layout_height">48dp</dimen>
+    <dimen name="search_layout_padding">4dp</dimen>
+    <dimen name="search_btn_start_end_margin">4dp</dimen>
+    <dimen name="search_btn_padding">2dp</dimen>
+    <dimen name="user_layout_margin_top">4dp</dimen>
+    <dimen name="follower_placeholder_padding">4dp</dimen>
 
 </resources>

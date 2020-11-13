@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.SearchFragment">
@@ -10,14 +9,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/search_layout_height"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="4dp">
+            android:padding="@dimen/search_layout_padding">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/searchBox"
@@ -36,10 +35,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="@dimen/search_btn_start_end_margin"
+                android:layout_marginEnd="@dimen/search_btn_start_end_margin"
                 android:background="?attr/selectableItemBackground"
-                android:padding="2dp"
+                android:padding="@dimen/search_btn_padding"
                 android:src="@mipmap/ic_search"
                 android:tint="@color/title_color" />
 
@@ -49,14 +48,14 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/divider_height"
         android:background="@color/placeholder_color"
         app:layout_constraintTop_toBottomOf="@+id/search_layout" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/user_layout_margin_top"
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <androidx.appcompat.widget.LinearLayoutCompat

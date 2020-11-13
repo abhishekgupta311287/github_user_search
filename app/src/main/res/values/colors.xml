@@ -7,8 +7,6 @@
     <color name="text_color">#52575C</color>
     <color name="placeholder_color">#5052575C</color>
     <color name="error_title_color">#4A4A4A</color>
-    <color name="error_subtitle_color">#929292</color>
-    <color name="retry_text_color">#31B057</color>
     <color name="title_color">#25282B</color>
     <color name="white">#FFFFFF</color>
 </resources>
