@@ -1,5 +1,5 @@
-# Github Search
-=============
+# Github Profile Search
+===================
 
 This app provides screen to search for github user name and display searched user details.
 
