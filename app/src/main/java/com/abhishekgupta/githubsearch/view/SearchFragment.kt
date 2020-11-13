@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abhishekgupta.githubsearch.R
 import com.abhishekgupta.githubsearch.model.*
-import com.abhishekgupta.githubsearch.util.isNetworkAvailable
 import com.abhishekgupta.githubsearch.view.adapter.FollowAdapter
 import com.abhishekgupta.githubsearch.viewmodel.SearchViewModel
 import com.bumptech.glide.Glide
@@ -116,10 +115,9 @@ class SearchFragment : Fragment() {
                 if (!isFetchingFollowing
                     && itemCount <= lastVisibleItemPosition + THRESHOLD
                     && itemCount < followingCount
-                    && requireContext().isNetworkAvailable() == true
                 ) {
-                    viewModel.getUserFollowing()
                     isFetchingFollowing = true
+                    viewModel.getUserFollowing()
                 }
             }
         })
@@ -152,10 +150,10 @@ class SearchFragment : Fragment() {
                 if (!isFetchingFollowers
                     && itemCount <= lastVisibleItemPosition + THRESHOLD
                     && itemCount < followersCount
-                    && requireContext().isNetworkAvailable() == true
+                    && dy > 0
                 ) {
-                    viewModel.getUserFollowers()
                     isFetchingFollowers = true
+                    viewModel.getUserFollowers()
                 }
             }
         })
@@ -216,9 +214,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun removeFollowerNullItem() {
-        isFetchingFollowers = false
-        if (followerAdapter.list.remove(null)) {
-            followerAdapter.notifyItemRemoved(followerAdapter.list.size)
+        layout_follower.recyclerView.post {
+            isFetchingFollowers = false
+            if (followerAdapter.list.remove(null)) {
+                followerAdapter.notifyItemRemoved(followerAdapter.list.size)
+            }
         }
     }
 
@@ -246,9 +246,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun removeFollowingNullItem() {
-        isFetchingFollowing = false
-        if (followingAdapter.list.remove(null)) {
-            followingAdapter.notifyItemRemoved(followerAdapter.list.size)
+        layout_following.recyclerView.post {
+            isFetchingFollowing = false
+            if (followingAdapter.list.remove(null)) {
+                followingAdapter.notifyItemRemoved(followerAdapter.list.size)
+            }
         }
     }
 
