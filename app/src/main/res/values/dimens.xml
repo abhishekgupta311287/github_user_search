@@ -51,5 +51,7 @@
     <dimen name="search_btn_padding">2dp</dimen>
     <dimen name="user_layout_margin_top">4dp</dimen>
     <dimen name="follower_placeholder_padding">4dp</dimen>
+    <dimen name="follower_layout_margin">4dp</dimen>
+    <dimen name="recycler_view_padding_bottom">52dp</dimen>
 
 </resources>
