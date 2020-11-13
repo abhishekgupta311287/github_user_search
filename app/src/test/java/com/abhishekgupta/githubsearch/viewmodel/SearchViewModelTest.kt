@@ -45,7 +45,7 @@ class SearchViewModelTest {
     }
 
     @Test
-    fun `validate user details and live data when sucess`() {
+    fun `validate user details and live data when success`() {
         val viewModel = SearchViewModel(repo)
 
         coEvery { repo.getUser(userName) }.returns(testUser)

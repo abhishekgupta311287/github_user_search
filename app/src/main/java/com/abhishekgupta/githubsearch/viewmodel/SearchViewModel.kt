@@ -27,15 +27,16 @@ class SearchViewModel(
         viewModelScope.launch {
             userLiveData.value = Resource.Loading()
 
-            val user = async { repo.getUser(userName) }.await()
+            val userDeferred = async { repo.getUser(userName) }
 
-            val followers = async { repo.getUserFollowers(userName) }.await()
+            val followers = async { repo.getUserFollowers(userName) }
 
-            val following = async { repo.getUserFollowing(userName) }.await()
+            val following = async { repo.getUserFollowing(userName) }
 
+            val user = userDeferred.await()
             if (user != null) {
                 userLiveData.value = Resource.Success(
-                    UserDetail(user, followers, following)
+                    UserDetail(user, followers.await(), following.await())
                 )
             } else {
                 userLiveData.value = Resource.Error("Unable to fetch user details")
