@@ -1,6 +1,7 @@
 package com.abhishekgupta.githubsearch.repo
 
 import android.content.Context
+import android.util.Log
 import com.abhishekgupta.githubsearch.model.Follower
 import com.abhishekgupta.githubsearch.model.Following
 import com.abhishekgupta.githubsearch.model.User
@@ -39,6 +40,7 @@ class SearchRepositoryImpl(
 
             user
         } catch (e: Exception) {
+            Log.w(TAG, "Error Fetching User Details", e)
             user
         }
     }
@@ -58,10 +60,12 @@ class SearchRepositoryImpl(
                 }
 
             }
-            followerPage++
+            if (followers.isNotEmpty())
+                followerPage++
 
             followers
         } catch (e: Exception) {
+            Log.w(TAG, "Error Fetching Follower list", e)
             followers
         }
     }
@@ -80,10 +84,12 @@ class SearchRepositoryImpl(
                 }
 
             }
-            followingPage++
+            if (following.isNotEmpty())
+                followingPage++
 
             following
         } catch (e: Exception) {
+            Log.w(TAG, "Error Fetching Following list", e)
             following
         }
     }
@@ -94,5 +100,7 @@ class SearchRepositoryImpl(
     companion object {
         const val LIMIT = 10
         const val CACHE_EXPIRY_HOURS = 2 // cache expiry time in hours
+
+        val TAG = SearchRepositoryImpl::class.java.simpleName
     }
 }
