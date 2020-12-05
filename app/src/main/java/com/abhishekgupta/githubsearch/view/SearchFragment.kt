@@ -2,9 +2,7 @@ package com.abhishekgupta.githubsearch.view
 
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,7 +23,7 @@ import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.shimmer_effect_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(R.layout.search_fragment) {
 
     companion object {
         private const val THRESHOLD = 2
@@ -42,13 +40,6 @@ class SearchFragment : Fragment() {
     private var followingCount = 0
 
     private val viewModel by viewModel<SearchViewModel>()// by koin dependency injection
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.search_fragment, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

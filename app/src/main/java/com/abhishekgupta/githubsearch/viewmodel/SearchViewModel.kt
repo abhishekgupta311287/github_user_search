@@ -16,9 +16,9 @@ class SearchViewModel(
     private val repo: SearchRepository
 ) : ViewModel() {
 
-    val userLiveData: MutableLiveData<Resource<UserDetail>> = MutableLiveData()
-    val followerLiveData: MutableLiveData<Resource<List<Follower>>> = MutableLiveData()
-    val followingLiveData: MutableLiveData<Resource<List<Following>>> = MutableLiveData()
+    val userLiveData = MutableLiveData<Resource<UserDetail>>()
+    val followerLiveData = MutableLiveData<Resource<List<Follower>>>()
+    val followingLiveData = MutableLiveData<Resource<List<Following>>>()
 
     private var userName = ""
 
