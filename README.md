@@ -1,10 +1,10 @@
 # Github Profile Search
-===================
+=========================
 
 This app provides screen to search for github user name and display searched user details.
 
 Introduction
---------------------
+-------------
 The app consists of single fragment (SearchFragment) that provides search box to enter github username and display the search results.
 
 Search result displays user details, user followers and the ones user is following.
@@ -56,7 +56,8 @@ SearchDaoImpl is tested using local unit tests with mock dao implementations.
 * Mockk for mocking in tests
 * Room for offline storage
 
-######Note :
+###### Note :
+
 This app uses no authentication github api, which has a rate limit of 60 requests per hour for each ip.
 
 
